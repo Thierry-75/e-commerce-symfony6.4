@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+    <main class="form-signin w-100 m-auto">
+    <h3 class="mt-4">Inscription</h3>
+	{{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
+	<fieldset>
+		<legend class="text-primary mt-2 mb-2">Mon Identité</legend>
+		<div class="form-group">
+			{{ form_label(registrationForm.lastname) }}
+			{{ form_widget(registrationForm.lastname,{'attr': {'autofocus': 'true'}}) }}
+			<div class="form-error">
+				{{ form_errors(registrationForm.lastname) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.firstname) }}
+			{{ form_widget(registrationForm.firstname) }}
+			<div class="form-error">
+				{{ form_errors(registrationForm.firstname) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.email) }}
+			{{ form_widget(registrationForm.email) }}
+			<div class="form-error">
+				{{ form_errors(registrationForm.email) }}
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="text-primary mt-2 mb-2">Mes coordonnées</legend>
+		<div class="form-group">
+			{{ form_label(registrationForm.address) }}
+			{{ form_widget(registrationForm.address) }}
+			<div class="form-error">
+				{{ form_errors(registrationForm.address) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.zipcode) }}
+			{{ form_widget(registrationForm.zipcode) }}
+			<div class="form-error">
+				{{ form_errors(registrationForm.zipcode) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(registrationForm.city) }}
+			{{ form_widget(registrationForm.city) }}
+			<div class="form-error">
+				{{ form_errors(registrationForm.city) }}
+			</div>
+		</div>
+	</fieldset>
+    	<fieldset>
+		<legend class="text-primary mt-3 mb-2">Finalisation</legend>
+	<div class="form-group">
+		{{ form_row(registrationForm.plainPassword, {label: 'Mot de passe' }) }}
+		<div class="form-error">
+			{{ form_errors(registrationForm.plainPassword) }}
+		</div>
+	</div>
+	<div class="form-group">
+		{{ form_label(registrationForm.Rgpd) }}
+		{{ form_widget(registrationForm.Rgpd) }}
+		<div class="form-error">
+			{{ form_errors(registrationForm.Rgpd) }}
+		</div>
+	</div>
+    </fieldset>
+	<button type="submit" class="btn btn-primary mt-4">M'inscrire</button>
+	{{ form_end(registrationForm) }}
+    </main>
+{% endblock %}

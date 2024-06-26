@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<main class="form-signin w-100 m-auto">
+  <form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+    <h4 class="mb-3 fw-normal"><strong>Please sign in&nbsp;<i class="bi bi-box-arrow-in-right"></i></strong></h4>
+    <div class="form-floating">
+      <input type="email" value="{{ last_username }}" class="form-control" id="inputEmail" name="email" autocomplete="email" autofocus>
+      <label for="email">Email address</label>
+    </div>
+    <div class="form-floating">
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" >
+      <label for="password">Password</label>
+    </div>
+    <div> <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"></div>
+    <div class="form-check text-start my-3">
+      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheck">
+      <label class="form-check-label" for="flexCheck">
+        Remember me
+      </label>
+    </div>
+    <button class="btn btn-primary w-100 py-2" data-toggle="tooltip" data-placement="top" title="Submit your email address" type="submit">Sign in</button>
+  </form>
+      <a href="#" class="btn btn-outline-warning  mt-5 mb-3 w-100 py-2 ">Forget password ?</a>
+
+</main>
+{% endblock %}
