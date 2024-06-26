@@ -1,21 +1,37 @@
-version: '3'
 
 services:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database:
-    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    image: postgres:${POSTGRES_VERSION:-15}-alpine
+    container_name: postgres-ecommerce
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
+      POSTGRES_DB: commerce_db
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      POSTGRES_PASSWORD: enki
+      POSTGRES_USER: enki
     volumes:
       - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      
+  ###< doctrine/doctrine-bundle ###
+  pgadmin:
+    container_name: pgadmin4-ecommerce
+    image: dpage/pgadmin4
+    depends_on:
+      - database
+    environment:
+      PGADMIN_DEFAULT_EMAIL: enki@enki.com
+      PGADMIN_DEFAULT_PASSWORD: enki
+    ports:
+      - "5050:80"
+      
+  rabbitmq:
+    image: rabbitmq:3.7-management
+    container_name: rabbitmq-ecommerce
+    ports: [5672, 15672]
+
+
 
 volumes:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database_data:
-###< doctrine/doctrine-bundle ###
+###< doctrine/doctrine-bundle ####
