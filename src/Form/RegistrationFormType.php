@@ -120,7 +120,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('Rgpd', CheckboxType::class, [
-                'attr'=>['class'=>'form-check mt-4'], 'label' => 'En m\'inscrivant sur ce site j\'accepte...','label_attr' => ['class' => 'form-label mt-4'],
+                'attr'=>['class'=>'form-check mt-4'], 'label' => ' J\'accepte les conditions générales','label_attr' => ['class' => 'form-label mt-4'],
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
