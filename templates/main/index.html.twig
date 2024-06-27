@@ -1,7 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue{% endblock %}
+{% block title %}Bienvenue
+{% endblock %}
 
 {% block body %}
-   <h1 class="text-center mt-4">Bienvenue sur notre boutique</h1>
+	<main class="container-fluid">
+		{% block left %}{% endblock %}
+		{% block center %}
+			<section class="row">
+				<div class="col-12 mt-4">
+					<h1>Site e-commerce</h1>
+					<p class="text-center">Bienvenue sur notre boutique</p>
+				</div>
+				{% for categorie in categories %}
+					{% if categorie.parent  == null %}
+						<div class="col-12">
+							<h2>
+								{{ categorie.name }}
+							</h2>
+						</div>
+					{% else %}
+						<div class="col-3 mt-4 mb-4">
+							<div class="card h-100" style="width: 18rem;">
+								<img src="..." class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title">{{ categorie.name }}</h5>
+									<p class="card-text">Some quick example text to build on the card 
+                           title and make up the bulk of the card's content.</p>
+									<a href="{{ path('app_categorie_list',{slug: categorie.slug})}}" class="btn btn-primary">Voir les produits</a>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+
+			</section>
+		{% endblock %}
+	</main>
 {% endblock %}

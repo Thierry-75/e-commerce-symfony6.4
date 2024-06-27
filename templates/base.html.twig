@@ -19,18 +19,11 @@
 	</head>
 	<body class="d-flex flex-column min-vh-100">
 		{% include '/_partials/_nav.html.twig' %}
-     
-		<main>
-			<div class="container">
 				{% include '/_partials/_flash.html.twig' %}
-
 				{% block body %}
-
 					{% block left %}{% endblock %}
 					{% block center %}{% endblock %}
 				{% endblock %}
-			</div>
-		</main>
 		{% include '/_partials/_footer.html.twig' %}
 	</body>
 </html>

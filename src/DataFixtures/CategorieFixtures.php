@@ -33,7 +33,8 @@ class CategorieFixtures extends Fixture
         $categorie = new Categorie();
         $categorie->setName($name)
                   ->setSlug($this->slugger->slug($categorie->getName())->lower())
-                  ->setParent($parent);
+                  ->setParent($parent)
+                  ->setCategoryOrder(random_int(3,10));
                   
                
         $manager->persist($categorie);
