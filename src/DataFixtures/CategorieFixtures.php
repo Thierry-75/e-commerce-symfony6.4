@@ -15,15 +15,27 @@ class CategorieFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $parent = $this->createCategory('Informatique',null,$manager);
+        $parent = $this->createCategory('informatique',null,$manager);
         $this->createCategory('Ordinateur portable', $parent,$manager);         
         $this->createCategory('Ecran', $parent,$manager);
         $this->createCategory('Souris', $parent,$manager);  
-        
-        $parent = $this->createCategory('Mode',null,$manager);
-        $this->createCategory('Homme', $parent,$manager);         
-        $this->createCategory('Femme', $parent,$manager);
-        $this->createCategory('Enfant', $parent,$manager); 
+        $this->createCategory('Clavier', $parent,$manager); 
+        $this->createCategory('Carte graphique', $parent,$manager); 
+        $this->createCategory('Mémoire vive', $parent,$manager); 
+        $this->createCategory('imprimante', $parent,$manager); 
+        $this->createCategory('CPU', $parent,$manager); 
+        $this->createCategory('Disque dur', $parent,$manager); 
+        $this->createCategory('Webcam', $parent,$manager); 
+        $manager->flush();
+        $parent = $this->createCategory('Image',null,$manager);
+        $this->createCategory('Téléviseur', $parent,$manager);         
+        $this->createCategory('Vidéoprojecteur', $parent,$manager);
+        $this->createCategory('Barre de son', $parent,$manager); 
+        $this->createCategory('Ecran de projection', $parent,$manager); 
+        $this->createCategory('Home Cinéma', $parent,$manager); 
+        $this->createCategory('Casque audio', $parent,$manager); 
+        $this->createCategory('Hifi', $parent,$manager); 
+        $this->createCategory('Meuble tv', $parent,$manager); 
 
         $manager->flush();
     }

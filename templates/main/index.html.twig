@@ -5,11 +5,10 @@
 
 {% block body %}
 	<main class="container-fluid">
-		{% block left %}{% endblock %}
-		{% block center %}
+	
 			<section class="row">
 				<div class="col-12 mt-4">
-					<h1>Site e-commerce</h1>
+					<h1 class="text-center">Site e-commerce</h1>
 					<p class="text-center">Bienvenue sur notre boutique</p>
 				</div>
 				{% for categorie in categories %}
@@ -33,8 +32,7 @@
 						</div>
 					{% endif %}
 				{% endfor %}
-
+				</div>
 			</section>
-		{% endblock %}
 	</main>
 {% endblock %}

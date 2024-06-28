@@ -25,7 +25,7 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     {
         $this->faker->addProvider(new PicsumPhotosProvider($this->faker));
 
-        for($i=0;$i<100;$i++)
+        for($i=0;$i<300;$i++)
         {
             $image = new Image();
             $image->setName($this->faker->imageUrl(500,500));
