@@ -20,7 +20,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type:'string',length: 180,unique:true)]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email = null;
 
     /**
@@ -49,6 +49,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 30)]
     private ?string $city = null;
+
+    #[ORM\Column(type: 'boolean',nullable:false)]
+    private ?bool $isVerified = false;
 
     #[ORM\Column()]
     private ?\DateTimeImmutable $createdAt = null;
@@ -237,6 +240,26 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $order->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isVerified
+     */
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    /**
+     * Set the value of isVerified
+     *
+     * @return  self
+     */
+    public function setIsVerified($isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

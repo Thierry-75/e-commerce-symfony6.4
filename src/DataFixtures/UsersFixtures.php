@@ -35,7 +35,8 @@ class UsersFixtures extends Fixture
                     $this->passwordEncoder->hashPassword($admin,'ArethiA75!')
               )
               ->setCreatedAt(new  \DateTimeImmutable())
-              ->setRoles(['ROLE_ADMIN']);
+              ->setRoles(['ROLE_ADMIN'])
+              ->setIsVerified(true);
             $manager->persist($admin);
 
         for($i = 0; $i < 5; $i++)
@@ -51,7 +52,8 @@ class UsersFixtures extends Fixture
                     $this->passwordEncoder->hashPassword($user,'ArethiA75!')
                 )
                 ->setCreatedAt(new \DateTimeImmutable())
-                ->setRoles(['ROLE_USER']);
+                ->setRoles(['ROLE_USER'])
+                ->setIsVerified(true);
             $manager->persist($user);
         }
         $manager->flush();
