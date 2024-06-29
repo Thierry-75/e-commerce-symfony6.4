@@ -53,7 +53,7 @@ class UsersFixtures extends Fixture
                 )
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setRoles(['ROLE_USER'])
-                ->setIsVerified(true);
+                ->setIsVerified(mt_rand(0,1) === 1 ? true : false );
             $manager->persist($user);
         }
         $manager->flush();
