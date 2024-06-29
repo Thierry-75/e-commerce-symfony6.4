@@ -53,6 +53,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean',nullable:false)]
     private ?bool $isVerified = false;
 
+    #[ORM\Column(type:'string',length:100,nullable:true)]
+    private ?string $resetToken = null;
+
     #[ORM\Column()]
     private ?\DateTimeImmutable $createdAt = null;
 
@@ -260,6 +263,24 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified($isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of resetToken
+     */
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    /**
+     * Set the value of resetToken
+     */
+    public function setResetToken($resetToken): self
+    {
+        $this->resetToken = $resetToken;
 
         return $this;
     }
