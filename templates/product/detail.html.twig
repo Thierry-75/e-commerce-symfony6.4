@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail de {{ produit.name }}{% endblock %}
+{% block title %}Détail de
+	{{ produit.name }}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ produit.name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/thierry/Symfony/e-commerce/src/Controller/ProductController.php</code></li>
-        <li>Your template at <code>/home/thierry/Symfony/e-commerce/templates/product/index.html.twig</code></li>
-    </ul>
-</div>
+	<main class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>{{ produit.name }}</h1>
+			</div>
+			<div class="col-6 ">
+				<div id="carouselExampleIndicators" class="carousel slide">
+					<div class="carousel-indicators">
+						{% for iteration in 1..produit.images | length %}
+							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ iteration - 1 }}" {{ (loop.first ) ? 'class="active" aria-current="true"': ''}} aria-label="{{ iteration -1 }}"></button>
+						{% endfor %}
+					</div>
+					<div class="carousel-inner">
+						{% for image in produit.images %}
+							<div class="carousel-item {{ (loop.first ) ? 'active' : ''}}">
+								<img src="{{ asset(image.name)}}" class="d-block w-100" alt="{{ produit.name }}">
+							</div>
+						{% endfor %}
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+			</div>
+			<div class="col-6">
+				<p>{{ produit.description }}</p>
+				<p>Catégorie :
+					{{ produit.categorie.name }}</p>
+				<p>Prix :
+					{{ produit.price / 100 }}€</p>
+					{% if produit.stock > 0 %}
+						<a href="#" class="btn btn-sm btn-warning">Ajouter au panier</a> 
+					{%else %}
+						<p class="text-danger">Temporairement en rupture de stock</p>
+					{% endif %}
+			</div>
+		</section>
+	</main>
 {% endblock %}

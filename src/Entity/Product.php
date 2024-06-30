@@ -38,11 +38,11 @@ class Product
     /**
      * @var Collection<int, Image>
      */
-    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'product', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'product', orphanRemoval: true,cascade: ['persist'])]
     private Collection $images;
 
     #[ORM\Column]
-    private ?float $price = null;
+    private ?int $price = null;
 
     /**
      * @var Collection<int, OrderDetail>
