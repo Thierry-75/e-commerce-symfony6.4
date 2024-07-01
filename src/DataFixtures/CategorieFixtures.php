@@ -22,10 +22,12 @@ class CategorieFixtures extends Fixture
         $this->createCategory('Clavier', $parent,$manager); 
         $this->createCategory('Carte graphique', $parent,$manager); 
         $this->createCategory('Mémoire vive', $parent,$manager); 
-        $this->createCategory('imprimante', $parent,$manager); 
+        $this->createCategory('Imprimante', $parent,$manager); 
         $this->createCategory('CPU', $parent,$manager); 
         $this->createCategory('Disque dur', $parent,$manager); 
         $this->createCategory('Webcam', $parent,$manager); 
+        $this->createCategory('Boitier', $parent,$manager); 
+        $this->createCategory('Carte son', $parent,$manager); 
         $manager->flush();
         $parent = $this->createCategory('Image',null,$manager);
         $this->createCategory('Téléviseur', $parent,$manager);         
