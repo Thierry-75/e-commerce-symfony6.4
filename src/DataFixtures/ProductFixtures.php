@@ -21,7 +21,7 @@ class ProductFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        for($prod= 1;$prod<=100;$prod++)
+        for($prod= 1;$prod<=300;$prod++)
         {
             $product = new Product();
             $product->setName($this->faker->text(15))
@@ -30,7 +30,7 @@ class ProductFixtures extends Fixture
                     ->setPrice($this->faker->randomNumber(5,true))
                     ->setStock($this->faker->numberBetween(0,30))
                     ->setCreatedAt(new \DateTimeImmutable());
-                    $category = $this->getReference('cat-'. rand(1,20));
+                    $category = $this->getReference('cat-'. rand(2,13));
                     $product->setCategorie($category);
                     $this->setReference('prod-'.$prod,$product);
                     $manager->persist($product);
